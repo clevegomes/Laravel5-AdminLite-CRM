@@ -172,7 +172,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{ url('logout') }}" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -198,7 +198,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
-
             <!-- search form (Optional) -->
             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">
@@ -214,11 +213,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="sidebar-menu">
 
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="dashboard"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-                <li><a href="chatter"><i class="fa fa-comment-o"></i><span>Chatter</span></a></li>
-                <li><a href="companies"><i class="fa fa-university"></i><span>Companies</span></a></li>
-                <li><a href="jobs"><i class="fa fa-list-alt"></i><span>Jobs</span></a></li>
-                <li><a href="calendar"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
+                <li class="active"><a href="{{ url('dashboard') }}"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+                <li><a href="{{ url('chatter') }}"><i class="fa fa-comment-o"></i><span>Chatter</span></a></li>
+                <li><a href="{{ url('companies') }}"><i class="fa fa-university"></i><span>Companies</span></a></li>
+                <li><a href="{{ url('jobs') }}"><i class="fa fa-list-alt"></i><span>Jobs</span></a></li>
+                <li><a href="{{ url('calendar') }}"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
                 {{--<li class="treeview">--}}
                     {{--<a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>--}}
                     {{--<ul class="treeview-menu">--}}
@@ -236,6 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
              <div class="row">
+                 <div class="col-lg-1 col-xs-3"></div>
                 <div class="col-lg-2 col-xs-4">
                     <!-- small box -->
                     <div class="small-box bg-aqua">
@@ -290,7 +290,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- ./col -->
                  <div class="col-lg-2 col-xs-4">
                      <!-- small box -->
-                     <div class="small-box bg-red">
+                     <div class="small-box bg-green">
                          <div class="inner">
                              <p>Calendar<br/><br/><br/></p>
                          </div>
@@ -301,13 +301,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                      </div>
                  </div>
                  <!-- ./col -->
+
+                 <div class="col-lg-1 col-xs-3"></div>
             </div>
         </section>
 
         <!-- Main content -->
         <section class="content">
 
-            <!-- Your Page Content Here -->
+            @yield('message')
+            @yield('content')
 
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
