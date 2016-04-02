@@ -72,6 +72,7 @@ class DashboardController extends Controller {
             DB::raw('count(*) as total'))->get()->toArray();
         $report["companies_by_sector"] = \App\Company::groupBy("sector")->select("sector",
             DB::raw('count(*) as total'))->get()->toArray();
+        dd($report);
 
 
           $allCompanies = \App\Company::where("created_at", ">=",
@@ -131,7 +132,6 @@ class DashboardController extends Controller {
         $report["jobMonths_target"] =$jobsMonths_target;
 
 
-        dd($report);
 
 
 //        dd($report);
