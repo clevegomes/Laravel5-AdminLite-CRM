@@ -37,7 +37,7 @@ class DashboardController extends Controller {
 
         $targer = Target::all();
 
-
+        dd("came");
         $start_month = new Carbon('first day of this month');
         $end_month = new Carbon('last day of this month');
 
