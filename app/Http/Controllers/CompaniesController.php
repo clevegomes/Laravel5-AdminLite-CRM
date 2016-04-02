@@ -14,9 +14,15 @@ class CompaniesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view("companies.index");
+
+        $level = in_array($request->level,["reg","apr","pros"]) ?$request->level : "reg";
+        $levels = ["reg"=>"Registered","apr"=>"Approached","pros"=>"Prospects"];
+
+        $companies = Company::where('level','=',$level)->orderBy('created_at', 'desc')->get();
+
+        return view("companies.index",compact("companies","level","levels"));
     }
 
     /**
@@ -26,7 +32,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-	    $company = new company();
+	    $company = new Company();
 
 
 	    $countriesList =["UAE"=>'United Arab Emirates',"USA"=>'United States America'];
@@ -38,10 +44,11 @@ class CompaniesController extends Controller
 	     * Quick prefill
 	     */
 
-	    $company = $this->setDummyData($company, $countriesList);
+        $levels = ["reg"=>"Registered","apr"=>"Approached","pros"=>"Prospects"];
+	    $company = $this->setDummyData($company, $countriesList,$levels);
 
 
-	    return view("companies.create",compact('countriesList','company'));
+	    return view("companies.create",compact('countriesList','company','levels'));
     }
 
     /**
@@ -52,7 +59,25 @@ class CompaniesController extends Controller
      */
     public function store(Requests\CompanyRequest $request)
     {
-        //
+        $companyobj = new Company();
+        $companyobj->company_name = $request->company_name;
+        $companyobj->country = $request->country;
+        $companyobj->city = $request->city;
+        $companyobj->sector = $request->sector;
+        $companyobj->phone = $request->phone;
+        $companyobj->email = $request->email;
+        $companyobj->website = $request->website;
+        $companyobj->profile_url = $request->profile_url;
+        $companyobj->logoimg = rand(1, 6).".png";
+        $companyobj->contact_person = $request->contact_person;
+        $companyobj->contact_phone = $request->contact_phone;
+        $companyobj->contact_mobile = $request->contact_mobile;
+        $companyobj->contact_email = $request->contact_email;
+        $companyobj->comments = $request->comments;
+        $companyobj->level = $request->level;
+        $companyobj->save();
+
+        return redirect("companies");
     }
 
     /**
@@ -72,9 +97,13 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Company $company)
     {
-        //
+        $countriesList =["UAE"=>'United Arab Emirates',"USA"=>'United States America'];
+        $levels = ["reg"=>"Registered","apr"=>"Approached","pros"=>"Prospects"];
+
+
+        return view("companies.edit",compact('countriesList','company','levels'));
     }
 
     /**
@@ -84,9 +113,26 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Requests\CompanyRequest $request, Company $companyobj)
     {
-        //
+
+        $companyobj->company_name = $request->company_name;
+        $companyobj->country = $request->country;
+        $companyobj->city = $request->city;
+        $companyobj->sector = $request->sector;
+        $companyobj->phone = $request->phone;
+        $companyobj->email = $request->email;
+        $companyobj->website = $request->website;
+        $companyobj->profile_url = $request->profile_url;
+        $companyobj->contact_person = $request->contact_person;
+        $companyobj->contact_phone = $request->contact_phone;
+        $companyobj->contact_mobile = $request->contact_mobile;
+        $companyobj->contact_email = $request->contact_email;
+        $companyobj->comments = $request->comments;
+        $companyobj->level = $request->level;
+        $companyobj->save();
+
+        return redirect("companies");
     }
 
     /**
@@ -104,15 +150,15 @@ class CompaniesController extends Controller
 	 * @param $company
 	 * @param $countriesList
 	 */
-	private function setDummyData($company, $countriesList)
+	private function setDummyData($company, $countriesList,$levels)
 	{
 		$randno = rand(1, 300);
-
+        $sectors = ["Real Estate","Banking","Retail","Financial","Health Care"];
 		$company->company_name = "TestCompany" . $randno;
 		$company->country = array_rand($countriesList);
+		$company->level = array_rand($levels);
 		$company->city = "TestCity" . $randno;
-		$company->sector = "TestSector" . $randno;
-		$company->sector = "TestSector" . $randno;
+		$company->sector = $sectors[rand(0,4)];
 		$company->phone = "+971 043434" . $randno;
 		$company->email = $randno . "@test.com";
 		$company->website = $randno . "test.com";

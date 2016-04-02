@@ -33,5 +33,9 @@
         {!! Form::text('profile_url',$company->profile_url,['class'=>'form-control'])  !!}
     </div>
 
+    <div class='form-group'>
+        {!! Form::label('level','Level:') !!}
+        {!! Form::select('level',$levels,$company->level,['class'=>'form-control']) !!}
+    </div>
 </div>
 

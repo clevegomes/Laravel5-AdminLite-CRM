@@ -22,11 +22,13 @@ class CreateCompaniesTable extends Migration
             $table->string('email');
             $table->string('website');
             $table->string('profile_url');
+            $table->string('logoimg');
             $table->string('contact_person');
             $table->string('contact_phone');
             $table->string('contact_mobile');
             $table->string('contact_email');
             $table->text('comments');
+            $table->string('level');
             $table->timestamps();
         });
     }

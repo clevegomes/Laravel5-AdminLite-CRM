@@ -25,5 +25,13 @@
 //});
 Route::auth();
 
-Route::get('/', 'HomeController@index');
-Route::resource('companies','CompaniesController');
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/', 'HomeController@index');
+    Route::resource('companies', 'CompaniesController');
+    Route::resource('chatter', 'ChatterController');
+    Route::resource('dashboard', 'DashboardController');
+    Route::resource('jobs', 'JobsController');
+    Route::resource('calendar', 'CalendarController');
+    Route::get('companies/{level}', 'CompaniesController@index');
+    Route::get('events', 'CalendarController@events');
+});

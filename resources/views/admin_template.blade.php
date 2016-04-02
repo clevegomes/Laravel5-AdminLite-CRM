@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>Bloovo </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="{{ asset("/bower_components/admin-lte/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
@@ -27,7 +27,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+
+
     <![endif]-->
+    @yield('style')
 </head>
 <body class="skin-blue">
 <div class="wrapper">
@@ -36,7 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b>Boovo</b>CRM</a>
+        <a href="index2.html" class="logo"><b>Bloovo</b>CRM</a>
 
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -63,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <a href="#">
                                             <div class="pull-left">
                                                 <!-- User Image -->
-                                                <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image"/>
+                                                <img src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="img-circle" alt="User Image"/>
                                             </div>
                                             <!-- Message title and timestamp -->
                                             <h4>
@@ -142,14 +145,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="user-image" alt="User Image"/>
+                            <img src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="user-image" alt="User Image"/>
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">Guest User</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
+                                <img src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="img-circle" alt="User Image" />
                                 <p>
                                     Guest User
                                 </p>
@@ -190,7 +193,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
+                    <img src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
                     <p>Guest User</p>
@@ -245,7 +248,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="icon">
                             <i class="ion ion-home"></i>
                         </div>
-                        <a class="small-box-footer" href="dashboard">Dashboard <i class="fa fa-arrow-circle-right"></i></a>
+                        <a class="small-box-footer" href="{{ url('dashboard') }}">Dashboard <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -258,7 +261,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="icon">
                             <i class="fa fa-comment-o"></i>
                         </div>
-                        <a class="small-box-footer" href="chatter">Chatter <i class="fa fa-arrow-circle-right"></i></a>
+                        <a class="small-box-footer" href="{{ url('chatter') }}">Chatter <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -271,7 +274,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="icon">
                             <i class="fa fa-university"></i>
                         </div>
-                        <a class="small-box-footer" href="companies">Companies <i class="fa fa-arrow-circle-right"></i></a>
+                        <a class="small-box-footer" href="{{ url('companies') }}">Companies <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -284,7 +287,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="icon">
                             <i class="fa fa-list-alt"></i>
                         </div>
-                        <a class="small-box-footer" href="jobs">Jobs <i class="fa fa-arrow-circle-right"></i></a>
+                        <a class="small-box-footer" href="{{ url('jobs') }}">Jobs <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -297,7 +300,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          <div class="icon">
                              <i class="fa fa-calendar"></i>
                          </div>
-                         <a class="small-box-footer" href="calendar">More info <i class="fa fa-arrow-circle-right"></i></a>
+                         <a class="small-box-footer" href="{{ url('calendar') }}">More info <i class="fa fa-arrow-circle-right"></i></a>
                      </div>
                  </div>
                  <!-- ./col -->
@@ -335,7 +338,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset ("/bower_components/admin-lte/bootstrap/js/bootstrap.min.js") }}" type="text/javascript"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset ("/bower_components/admin-lte/dist/js/app.min.js") }}" type="text/javascript"></script>
-
+@yield('scripts')
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience -->

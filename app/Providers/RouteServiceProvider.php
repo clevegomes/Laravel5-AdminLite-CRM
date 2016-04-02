@@ -38,6 +38,9 @@ class RouteServiceProvider extends ServiceProvider
     public function map(Router $router)
     {
         $this->mapWebRoutes($router);
+        $router->model('companies','App\Company');
+        $router->model('jobs','App\Job');
+        $router->model('calendar','App\Calendar');
 
         //
     }
