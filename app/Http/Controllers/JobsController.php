@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\company;
-use App\job;
+use App\Job;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
