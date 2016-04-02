@@ -43,7 +43,7 @@ class DashboardController extends Controller {
 
         $quarter = new Carbon();
 
-
+        dd($report);
         $report["jobs_this_month"] = Job::where("created_at", ">=", $start_month->format("Y-m-d"))->where("created_at",
             "<=", $end_month)->count();
 
@@ -54,7 +54,7 @@ class DashboardController extends Controller {
         $report["pending_jobs_month"] = $targer[0]->monthly_target_jobs - $report["jobs_this_month"];
         $report["pending_jobs_quarter"] = $targer[0]->quarterly_target_jobs - $report["jobs_this_quarterly"];
 
-        dd($report);
+
         $report["companies_this_month"] = \App\Company::where("created_at", ">=",
             $start_month->format("Y-m-d"))->where("created_at", "<=", $end_month)->count();
 
