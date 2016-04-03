@@ -28,6 +28,7 @@ class DashboardController extends Controller {
         $report["total_comp"] = \App\Company::all()->count();
         $report["apr_comp"] = \App\Company::where("level", "=", "apr")->count();
         $report["pros_comp"] = \App\Company::where("level", "=", "pros")->count();
+        
         $report["hitrate"] = ($report["total_comp"]>0) ? round($report["pros_comp"] * 100 / $report["total_comp"],2,PHP_ROUND_HALF_UP) : 0;
 
 
