@@ -34,7 +34,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <b>Boovo</b>CRM
+                    <b>Bloovo</b>CRM
                 </a>
             </div>
 
