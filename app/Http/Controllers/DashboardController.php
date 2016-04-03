@@ -28,11 +28,11 @@ class DashboardController extends Controller {
         $report["total_comp"] = \App\Company::all()->count();
         $report["apr_comp"] = \App\Company::where("level", "=", "apr")->count();
         $report["pros_comp"] = \App\Company::where("level", "=", "pros")->count();
-        $report["hitrate"] = $report["pros_comp"] * 100 / $report["total_comp"];
+        $report["hitrate"] = round($report["pros_comp"] * 100 / $report["total_comp"],2,PHP_ROUND_HALF_UP);
 
 
         $report["total_jobs"] = Job::all()->count();
-        $report["open_jobs"] = Job::where("closing_date", ">", Carbon::now()->format("Y-m-d"))->count();
+        $report["open_jobs"] = Job::where("closing_date", ">=", Carbon::now()->format("Y-m-d"))->count();
         $report["open_closed"] = $report["total_jobs"] - $report["open_jobs"];
 
         $targer = Target::all();
@@ -43,11 +43,11 @@ class DashboardController extends Controller {
 
         $quarter = new Carbon();
 
-        $report["jobs_this_month"] = Job::where("created_at", ">=", $start_month->format("Y-m-d"))->where("created_at",
+        $report["jobs_this_month"] = Job::where("closing_date", ">=", $start_month->format("Y-m-d"))->where("closing_date",
             "<=", $end_month)->count();
 
-        $report["jobs_this_quarterly"] = Job::where("created_at", ">=",
-            $quarter->firstOfQuarter()->format("Y-m-d"))->where("created_at", "<=",
+        $report["jobs_this_quarterly"] = Job::where("closing_date", ">=",
+            $quarter->firstOfQuarter()->format("Y-m-d"))->where("closing_date", "<=",
             $quarter->lastOfQuarter()->format("Y-m-d"))->count();
 
         $report["pending_jobs_month"] = $targer[0]->monthly_target_jobs - $report["jobs_this_month"];
@@ -104,9 +104,10 @@ class DashboardController extends Controller {
 
 
 
-        $allJobs = Job::where("created_at", ">=",
-            $quarter->firstOfYear()->format("Y-m-d"))->where("created_at", "<=",
+        $allJobs = Job::where("closing_date", ">=",
+            $quarter->firstOfYear()->format("Y-m-d"))->where("closing_date", "<=",
             $quarter->lastOfYear()->format("Y-m-d"))->get();
+
 
         $jobsMonths_target = [$targer[0]->monthly_target_jobs,
             $targer[0]->monthly_target_jobs,
@@ -124,7 +125,7 @@ class DashboardController extends Controller {
         $jobsMonths_achieved = [0,0,0,0,0,0,0,0,0,0,0,0];
         foreach($allJobs as $selJob)
         {
-            $jobsMonths_achieved[$selJob->created_at->month -1]++;
+            $jobsMonths_achieved[Carbon::parse($selJob->closing_date)->month -1]++;
         }
 
         $report["jobMonths_achieved"] = $jobsMonths_achieved;
