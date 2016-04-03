@@ -53,108 +53,108 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Messages: style can be found in dropdown.less-->
                     <li class="dropdown messages-menu">
                         <!-- Menu toggle button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="{{URL::to('messages')}}" >
                             <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
+                            <span class="label label-success">@include('messenger.unread-count')</span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 4 messages</li>
-                            <li>
-                                <!-- inner menu: contains the messages -->
-                                <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <!-- User Image -->
-                                                <img src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="img-circle" alt="User Image"/>
-                                            </div>
-                                            <!-- Message title and timestamp -->
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
-                                            <!-- The message -->
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li><!-- end message -->
-                                </ul><!-- /.menu -->
-                            </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
-                        </ul>
+                        {{--<ul class="dropdown-menu">--}}
+                            {{--<li class="header">You have 4 messages</li>--}}
+                            {{--<li>--}}
+                                {{--<!-- inner menu: contains the messages -->--}}
+                                {{--<ul class="menu">--}}
+                                    {{--<li><!-- start message -->--}}
+                                        {{--<a href="#">--}}
+                                            {{--<div class="pull-left">--}}
+                                                {{--<!-- User Image -->--}}
+                                                {{--<img src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="img-circle" alt="User Image"/>--}}
+                                            {{--</div>--}}
+                                            {{--<!-- Message title and timestamp -->--}}
+                                            {{--<h4>--}}
+                                                {{--Support Team--}}
+                                                {{--<small><i class="fa fa-clock-o"></i> 5 mins</small>--}}
+                                            {{--</h4>--}}
+                                            {{--<!-- The message -->--}}
+                                            {{--<p>Why not buy a new awesome theme?</p>--}}
+                                        {{--</a>--}}
+                                    {{--</li><!-- end message -->--}}
+                                {{--</ul><!-- /.menu -->--}}
+                            {{--</li>--}}
+                            {{--<li class="footer"><a href="#">See All Messages</a></li>--}}
+                        {{--</ul>--}}
                     </li><!-- /.messages-menu -->
 
                     <!-- Notifications Menu -->
-                    <li class="dropdown notifications-menu">
-                        <!-- Menu toggle button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
-                            <li>
-                                <!-- Inner Menu: contains the notifications -->
-                                <ul class="menu">
-                                    <li><!-- start notification -->
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li><!-- end notification -->
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                    </li>
+                    {{--<li class="dropdown notifications-menu">--}}
+                        {{--<!-- Menu toggle button -->--}}
+                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
+                            {{--<i class="fa fa-bell-o"></i>--}}
+                            {{--<span class="label label-warning">10</span>--}}
+                        {{--</a>--}}
+                        {{--<ul class="dropdown-menu">--}}
+                            {{--<li class="header">You have 10 notifications</li>--}}
+                            {{--<li>--}}
+                                {{--<!-- Inner Menu: contains the notifications -->--}}
+                                {{--<ul class="menu">--}}
+                                    {{--<li><!-- start notification -->--}}
+                                        {{--<a href="#">--}}
+                                            {{--<i class="fa fa-users text-aqua"></i> 5 new members joined today--}}
+                                        {{--</a>--}}
+                                    {{--</li><!-- end notification -->--}}
+                                {{--</ul>--}}
+                            {{--</li>--}}
+                            {{--<li class="footer"><a href="#">View all</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
                     <!-- Tasks Menu -->
-                    <li class="dropdown tasks-menu">
-                        <!-- Menu Toggle Button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">9</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 9 tasks</li>
-                            <li>
-                                <!-- Inner menu: contains the tasks -->
-                                <ul class="menu">
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <!-- Task title and progress text -->
-                                            <h3>
-                                                Design some buttons
-                                                <small class="pull-right">20%</small>
-                                            </h3>
-                                            <!-- The progress bar -->
-                                            <div class="progress xs">
-                                                <!-- Change the css width attribute to simulate progress -->
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
+                    {{--<li class="dropdown tasks-menu">--}}
+                        {{--<!-- Menu Toggle Button -->--}}
+                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
+                            {{--<i class="fa fa-flag-o"></i>--}}
+                            {{--<span class="label label-danger">9</span>--}}
+                        {{--</a>--}}
+                        {{--<ul class="dropdown-menu">--}}
+                            {{--<li class="header">You have 9 tasks</li>--}}
+                            {{--<li>--}}
+                                {{--<!-- Inner menu: contains the tasks -->--}}
+                                {{--<ul class="menu">--}}
+                                    {{--<li><!-- Task item -->--}}
+                                        {{--<a href="#">--}}
+                                            {{--<!-- Task title and progress text -->--}}
+                                            {{--<h3>--}}
+                                                {{--Design some buttons--}}
+                                                {{--<small class="pull-right">20%</small>--}}
+                                            {{--</h3>--}}
+                                            {{--<!-- The progress bar -->--}}
+                                            {{--<div class="progress xs">--}}
+                                                {{--<!-- Change the css width attribute to simulate progress -->--}}
+                                                {{--<div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">--}}
+                                                    {{--<span class="sr-only">20% Complete</span>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</a>--}}
+                                    {{--</li><!-- end task item -->--}}
+                                {{--</ul>--}}
+                            {{--</li>--}}
+                            {{--<li class="footer">--}}
+                                {{--<a href="#">View all tasks</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
                     <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="user-image" alt="User Image"/>
+                            <img src="{{ asset("/bower_components/admin-lte/dist/img/".Auth::user()->image) }}" class="user-image" alt="User Image"/>
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Guest User</span>
+                            <span class="hidden-xs">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="img-circle" alt="User Image" />
+                                <img src="{{ asset("/bower_components/admin-lte/dist/img/".Auth::user()->image) }}" class="img-circle" alt="User Image" />
                                 <p>
-                                    Guest User
+
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -172,14 +172,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    {{--<a href="#" class="btn btn-default btn-flat">Profile</a>--}}
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{ url('logout') }}" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
-                    </li>
+                    {{--</li>--}}
                 </ul>
             </div>
         </nav>
@@ -193,22 +193,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="img-circle" alt="User Image" />
+                    <img src="{{ asset("/bower_components/admin-lte/dist/img/".Auth::user()->image) }}" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                    <p>Guest User</p>
+                    <p>{{ Auth::user()->name }}</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
             <!-- search form (Optional) -->
             <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search..."/>
-          <span class="input-group-btn">
-            <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-          </span>
-                </div>
+                {{--<div class="input-group">--}}
+                    {{--<input type="text" name="q" class="form-control" placeholder="Search..."/>--}}
+          {{--<span class="input-group-btn">--}}
+            {{--<button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>--}}
+          {{--</span>--}}
+                {{--</div>--}}
             </form>
             <!-- /.search form -->
 
@@ -217,7 +217,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="{{ url('dashboard') }}"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-                <li><a href="{{ url('chatter') }}"><i class="fa fa-comment-o"></i><span>Chatter</span></a></li>
+                <li><a href="{{ URL::to('messages') }}"><i class="fa fa-comment-o"></i><span>Chatter</span></a></li>
                 <li><a href="{{ url('companies') }}"><i class="fa fa-university"></i><span>Companies</span></a></li>
                 <li><a href="{{ url('jobs') }}"><i class="fa fa-list-alt"></i><span>Jobs</span></a></li>
                 <li><a href="{{ url('calendar') }}"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
@@ -261,7 +261,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="icon">
                             <i class="fa fa-comment-o"></i>
                         </div>
-                        <a class="small-box-footer" href="{{ url('chatter') }}">Chatter <i class="fa fa-arrow-circle-right"></i></a>
+                        <a class="small-box-footer" href="{{ URL::to('messages') }}">Chatter <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

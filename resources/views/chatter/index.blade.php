@@ -6,10 +6,12 @@
             <h3 class="box-title">Direct Chat</h3>
 
             <div class="box-tools pull-right">
-                <span class="badge bg-yellow" title="" data-toggle="tooltip" data-original-title="3 New Messages">3</span>
+                <span class="badge bg-yellow" title="" data-toggle="tooltip"
+                      data-original-title="3 New Messages">3</span>
                 <button data-widget="collapse" class="btn btn-box-tool" type="button"><i class="fa fa-minus"></i>
                 </button>
-                <button data-widget="chat-pane-toggle" title="Contacts" data-toggle="tooltip" class="btn btn-box-tool" type="button">
+                <button data-widget="chat-pane-toggle" title="Contacts" data-toggle="tooltip" class="btn btn-box-tool"
+                        type="button">
                     <i class="fa fa-comments"></i></button>
                 <button data-widget="remove" class="btn btn-box-tool" type="button"><i class="fa fa-times"></i>
                 </button>
@@ -26,9 +28,10 @@
                         <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
                     </div>
                     <!-- /.direct-chat-info -->
-                    <img alt="message user image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }} " class="direct-chat-img"><!-- /.direct-chat-img -->
+                    <img alt="message user image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }} "
+                         class="direct-chat-img"><!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
-                       Testing Testing 123
+                        Testing Testing 123
                     </div>
                     <!-- /.direct-chat-text -->
                 </div>
@@ -41,7 +44,8 @@
                         <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
                     </div>
                     <!-- /.direct-chat-info -->
-                    <img alt="message user image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="direct-chat-img"><!-- /.direct-chat-img -->
+                    <img alt="message user image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}"
+                         class="direct-chat-img"><!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
                         Testing Testing 123
                     </div>
@@ -56,7 +60,8 @@
                         <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
                     </div>
                     <!-- /.direct-chat-info -->
-                    <img alt="message user image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }} " class="direct-chat-img"><!-- /.direct-chat-img -->
+                    <img alt="message user image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }} "
+                         class="direct-chat-img"><!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
                         Testing Testing 123
                     </div>
@@ -71,7 +76,8 @@
                         <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
                     </div>
                     <!-- /.direct-chat-info -->
-                    <img alt="message user image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="direct-chat-img"><!-- /.direct-chat-img -->
+                    <img alt="message user image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}"
+                         class="direct-chat-img"><!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
                         Testing Testing 123
                     </div>
@@ -87,7 +93,8 @@
                 <ul class="contacts-list">
                     <li>
                         <a href="#">
-                            <img alt="User Image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }} " class="contacts-list-img">
+                            <img alt="User Image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }} "
+                                 class="contacts-list-img">
 
                             <div class="contacts-list-info">
                                 <span class="contacts-list-name">
@@ -117,7 +124,8 @@
                     <!-- End Contact Item -->
                     <li>
                         <a href="#">
-                            <img alt="User Image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}" class="contacts-list-img">
+                            <img alt="User Image" src="{{ asset("/bower_components/admin-lte/dist/img/guest.png") }}"
+                                 class="contacts-list-img">
 
                             <div class="contacts-list-info">
                                 <span class="contacts-list-name">
@@ -184,9 +192,9 @@
         <div class="box-footer">
             <form method="post" action="#">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Type Message ..." name="message">
+                    <input type="text" class="form-control chatmessage" placeholder="Type Message ..." name="message">
                           <span class="input-group-btn">
-                            <button class="btn btn-warning btn-flat" type="button">Send</button>
+                            <button class="btn btn-warning btn-flat chatter" type="button">Send</button>
                           </span>
                 </div>
             </form>
@@ -194,4 +202,31 @@
         <!-- /.box-footer-->
     </div>
 
+@endsection
+
+@section("scripts")
+<script>
+
+    $(".chatter").click(function(){
+
+        var data = {"userid":1,"message":$(".chatmessage").val(),"receiver":2}
+
+        var jqxhr = $.get( "messages",data, function() {
+            alert( "success" );
+        })
+                .done(function() {
+                    alert( "second success" );
+                })
+                .fail(function() {
+                    alert( "error" );
+                })
+                .always(function() {
+                    alert( "finished" );
+                });
+    });
+
+</script>
+@endsection
+
+@section("style")
 @endsection
